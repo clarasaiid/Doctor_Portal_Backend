@@ -1,0 +1,28 @@
+fastapi==0.115.0
+uvicorn[standard]==0.32.0
+python-multipart==0.0.12
+pillow==11.0.0
+pydantic==2.9.2
+sqlalchemy==2.0.36
+python-jose[cryptography]==3.3.0
+passlib[bcrypt]==1.7.4
+python-dotenv==1.0.1
+# DeepSeek-OCR-2 REQUIRES these specific versions
+transformers==4.46.3
+tokenizers==0.20.3
+torch==2.6.0
+torchvision==0.21.0
+torchaudio==2.6.0
+accelerate==1.1.1
+sentencepiece>=0.2.0
+protobuf==5.28.3
+huggingface-hub>=0.30.0
+safetensors==0.4.5
+numpy==1.26.4
+aiofiles==24.1.0
+addict>=2.4.0
+easydict>=1.9  # Required by DeepSeek-OCR-2
+matplotlib>=3.10.0
+requests>=2.32.0
+einops>=0.8.0
+# flash-attn==2.7.3  # REQUIRED for CUDA: pip install flash-attn==2.7.3 --no-build-isolation
