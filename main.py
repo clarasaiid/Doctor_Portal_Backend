@@ -55,11 +55,10 @@ app = FastAPI(
     lifespan=lifespan
 )
 
-# CORS configuration
-FRONTEND_URL = os.getenv("FRONTEND_URL", "http://localhost:19006")
+# CORS configuration - allow all origins for flexibility with tunnels
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[FRONTEND_URL, "http://localhost:19006", "http://localhost:8081"],
+    allow_origins=["*"],  # Allow all origins for localtunnel/ngrok
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
