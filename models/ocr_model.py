@@ -68,16 +68,19 @@ class DeepSeekOCRModel:
                 trust_remote_code=True
             )
             
-            # Load model with flash_attention_2 (REQUIRED)
+            # Load model DIRECTLY to GPU with bfloat16 to avoid slow CPU->GPU transfer
+            logger.info("Loading model directly to GPU (this takes 2-3 minutes)...")
             self.model = AutoModel.from_pretrained(
                 self.model_name,
                 trust_remote_code=True,
                 use_safetensors=True,
+                torch_dtype=torch.bfloat16,  # Load directly in bfloat16
+                device_map="cuda",  # Load directly to GPU
                 _attn_implementation="flash_attention_2"
             )
             
-            # Set to evaluation mode, move to GPU, use bfloat16
-            self.model = self.model.eval().cuda().to(torch.bfloat16)
+            # Set to evaluation mode
+            self.model = self.model.eval()
             
             logger.info("✅ Model loaded successfully")
             
